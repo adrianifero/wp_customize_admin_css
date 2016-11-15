@@ -1,0 +1,43 @@
+body, html, h1, h2, h3, h4, h5, h6, span, p, a, td, li { font-family: 'Open Sans', sans-serif; !important; font-style: normal; font-size: 14px; font-weight:400; }
+h1, h2, h3, h4, h5, h6, li { margin: 7px 0; }
+body { margin:0px; }
+a { text-decoration:none; color: black; font-weight:bold;  }
+li a { text-decoration:none; color: black; font-weight:normal;  }
+a:hover { opactiy:0.8s; color:rgb(172, 172, 172); transition: all 0.3s; -webkit-transition: all 0.3s; }
+.small { font-size: 0.6em; }
+
+h1 { font-size: 28px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+
+/* Wordpress Default Elements */
+.alignleft { float: left; margin-right: 20px; }
+.alignright { float: right; margin-left: 20px; }
+.aligncenter { margin-left: auto; margin-right: auto; display: block; }
+.wp-caption { border: 4px solid black; padding: 4px; }
+.wp-caption-text {
+	text-align: center;
+	font-size: 9px;
+	border: 1px solid #999;
+	padding: 4px;
+	background: black;
+	color: white;
+}
+
+blockquote {
+	padding: 0 0 0 15px;
+	margin: 0 0 28px;
+	border-left: 5px solid #eee;
+	font-style: italic;
+}
+code { color: #950B0B; } 
+small { color: gray; font-size:0.4em; }
+pre {
+	background: rgb(236, 236, 236);
+	padding: 6px;
+}
+cite { color: #DFDFDF; font-style:italic; } 
+dfn { color: #DFDFDF; font-style:italic; font-size:0.6em; } 
+
+

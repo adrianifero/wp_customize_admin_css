@@ -1,0 +1,74 @@
+/* ************************************ */
+/* Changes to WP Admin 
+/* ************************************ */
+#wpadminbar #wp-admin-bar-site-name>.ab-item {
+	background: url('../images/logo.png') no-repeat;
+	background-size: 32px;
+	height: 32px;
+	padding-left: 32px;
+}
+#wpadminbar #wp-admin-bar-site-name>.ab-item:before {
+	content: "";
+} 
+
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-wp-logo { display:none; }
+
+/* color */
+a {
+	color: #9F0406;
+}
+a:active, a:hover {
+	color: #111;
+}
+/*
+div#wpadminbar {
+	display:none;
+}
+html.wp-toolbar {
+	padding-top:0px;
+}
+*/
+.wp-core-ui .button-primary {
+	background: #ba0d2e;
+	border-color: #aa030c #990514 #99070f;
+	-webkit-box-shadow: 0 1px 0 #99091c;
+	box-shadow: 0 1px 0 #990d37;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 0 -1px 1px #99072c, 1px 0 1px #99062b, 0 1px 1px #990325, -1px 0 1px #990323;
+}
+
+.wp-core-ui .button-primary.focus, .wp-core-ui .button-primary.hover, .wp-core-ui .button-primary:focus, .wp-core-ui .button-primary:hover {
+	background: #940319;
+	border-color: #990834;
+	color: #fff;	
+}
+
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+	/* background-color: #4c3638;	*/
+}
+#adminmenu .wp-has-current-submenu .wp-submenu, #adminmenu .wp-has-current-submenu .wp-submenu.sub-open, #adminmenu .wp-has-current-submenu.opensub .wp-submenu, #adminmenu a.wp-has-current-submenu:focus+.wp-submenu, .no-js li.wp-has-current-submenu:hover .wp-submenu {
+	/* background-color: #6E5456;*/
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head, #adminmenu .wp-menu-arrow, #adminmenu .wp-menu-arrow div, #adminmenu li.current a.menu-top, #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, .folded #adminmenu li.current.menu-top, .folded #adminmenu li.wp-has-current-submenu {
+	background: #9F0406;
+}
+
+#adminmenu .wp-submenu a:focus, #adminmenu .wp-submenu a:hover, #adminmenu a:hover, #adminmenu li.menu-top>a:focus {
+	color: #9F0406;
+}
+
+#wpadminbar .ab-top-menu>li.hover>.ab-item, #wpadminbar .ab-top-menu>li:hover>.ab-item, #wpadminbar .ab-top-menu>li>.ab-item:focus, #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus {
+	background: #333;
+	color: #9F0406;
+}
+
+#wpadminbar .quicklinks .menupop ul li a:focus, #wpadminbar .quicklinks .menupop ul li a:focus strong, #wpadminbar .quicklinks .menupop ul li a:hover, #wpadminbar .quicklinks .menupop ul li a:hover strong, #wpadminbar .quicklinks .menupop.hover ul li a:focus, #wpadminbar .quicklinks .menupop.hover ul li a:hover, #wpadminbar li .ab-item:focus:before, #wpadminbar li a:focus .ab-icon:before, #wpadminbar li.hover .ab-icon:before, #wpadminbar li.hover .ab-item:before, #wpadminbar li:hover #adminbarsearch:before, #wpadminbar li:hover .ab-icon:before, #wpadminbar li:hover .ab-item:before, #wpadminbar.nojs .quicklinks .menupop:hover ul li a:focus, #wpadminbar.nojs .quicklinks .menupop:hover ul li a:hover {
+	color: #9F0406;
+}
+
+h2.hndle.ui-sortable-handle {
+	background-color: #9F0406;
+	color: white;
+}
