@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Customize Admin CSS
  * Description: Customize your Admin CSS with an admin file
- * Version: 0.0.3
+ * Version: 0.0.4
  * Author: Adrian Toro
 
 **/
@@ -14,11 +14,17 @@ if ( ! function_exists( 'wpcustomizeadmin_scripts' ) ) :
 	function wpcustomizeadmin_scripts() {
 
 		global $wp_styles;
-		wp_enqueue_style( 'default_admin_style', plugin_dir_url( __FILE__ ).'/css/admin.css' , false );
+		wp_enqueue_style( 'default_admin_style', plugin_dir_url( __FILE__ ) . 'css/admin.css' , false );
 		$wp_styles->add_data( 'default_theme_options', 'rtl', true );
 	}
 	add_action( 'admin_print_styles', 'wpcustomizeadmin_scripts'  );
 endif; 
+
+	function load_custom_wp_admin_style() {
+        wp_register_script( 'custom_wp_admin_js', plugin_dir_url( __FILE__ ) . 'js/admin.js', array('jquery'), '1.0.0' );
+        wp_enqueue_script( 'custom_wp_admin_js' );
+	}
+	add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 
 if ( ! function_exists( 'wpcustomizeadmin_setup' ) ) :
@@ -67,12 +73,15 @@ add_action('admin_head', 'wpcustomizeadmin_setcustomlogo');
 function wpcustomizeadmin_setcustomlogo() {
 	$customicon = get_option('wpcustomizeadmin_adminicon');
 	
+	$customcss = get_option('wpcustomizeadmin_admincss');
+	
 	if ( !empty($customicon) ){
         echo "
         <style>
         #wpadminbar #wp-admin-bar-site-name > .ab-item {
 			background-image: url('".$customicon."');
 		}
+		".$customcss."
         </style>
         ";
 	}
@@ -133,12 +142,12 @@ function wpcustomizeadmin_options() {
                         <tr valign="top">
                         	<th scope="row"><?php _e('Icon File','wpcustomizeadmin');?>:</th>
                         	<td>
-                        		<input type="text" name="wpcustomizeadmin_input_icon" value="<?php echo get_option('wpcustomizeadmin_adminicon'); ?>"/></td>
+                        		<input class="customicon" type="text" name="wpcustomizeadmin_input_icon" value="<?php echo get_option('wpcustomizeadmin_adminicon'); ?>"/></td>
                         </tr>
                         <tr valign="top">
                         	<th scope="row"><?php _e('Custom CSS lines','wpcustomizeadmin');?>:</th>
 							<td>
-                      			<textarea name="wpcustomizeadmin_input_css"><?php echo get_option('wpcustomizeadmin_admincss');?></textarea>
+                      			<textarea class="customcss" name="wpcustomizeadmin_input_css"><?php echo get_option('wpcustomizeadmin_admincss');?></textarea>
                        		</td>
                         </tr>
                         
