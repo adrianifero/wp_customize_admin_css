@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WP Customize Admin CSS
  * Description: Customize your Admin CSS with an admin file
- * Version: 0.0.4
+ * Version: 0.0.5
  * Author: Adrian Toro
 
 **/
@@ -72,7 +72,6 @@ add_action('wp_footer', 'wpcustomizeadmin_stick_admin_bar_to_bottom_css');
 add_action('admin_head', 'wpcustomizeadmin_setcustomlogo');
 function wpcustomizeadmin_setcustomlogo() {
 	$customicon = get_option('wpcustomizeadmin_adminicon');
-	
 	$customcss = get_option('wpcustomizeadmin_admincss');
 	
 	if ( !empty($customicon) ){
@@ -85,6 +84,16 @@ function wpcustomizeadmin_setcustomlogo() {
         </style>
         ";
 	}
+}
+
+add_filter('admin_body_class','wpcustomizeadmin_setbodycolor');
+function wpcustomizeadmin_setbodycolor( $classes ) {
+	
+	$customcolor = get_option('wpcustomizeadmin_admincolor');
+	
+	$classes .= ' customizeadmin ';
+	$classes .= $customcolor;
+    return $classes;
 }
 
 
@@ -101,6 +110,7 @@ add_action( 'admin_menu', 'wpcustomizeadmin_menu' );
 
 function wpcustomizeadmin_register_settings() {
 	register_setting( 'wpcustomizeadmin_group_settings', 'wpcustomizeadmin_admincss'); 
+	register_setting( 'wpcustomizeadmin_group_settings', 'wpcustomizeadmin_admincolor'); 
 	register_setting( 'wpcustomizeadmin_group_settings', 'wpcustomizeadmin_adminicon'); 
 }
 
@@ -113,6 +123,9 @@ function wpcustomizeadmin_options() {
 	if (!empty($_POST)){
 		if (isset($_POST["wpcustomizeadmin_input_css"])) { 
 			update_option('wpcustomizeadmin_admincss', $_POST["wpcustomizeadmin_input_css"]);
+		}
+		if (isset($_POST["wpcustomizeadmin_input_color"])) { 
+			update_option('wpcustomizeadmin_admincolor', $_POST["wpcustomizeadmin_input_color"]);
 		}
 		if (isset($_POST["wpcustomizeadmin_input_icon"])) { 
 			update_option('wpcustomizeadmin_adminicon', $_POST["wpcustomizeadmin_input_icon"]);
@@ -130,7 +143,7 @@ function wpcustomizeadmin_options() {
         </div>
         
         <div id="wpcustomizeadmin-content">
-        
+			
             <p><?php _e('From this screen you can enter your custom CSS lines and custom logo to change the way the admin looks. These modifications will only affect the admin part of wordpress so registered users with accesso to Dashboard will have a better user experience.','wpcustomizeadmin');?></p>
             
             <form method="post" action="">
@@ -143,6 +156,18 @@ function wpcustomizeadmin_options() {
                         	<th scope="row"><?php _e('Icon File','wpcustomizeadmin');?>:</th>
                         	<td>
                         		<input class="customicon" type="text" name="wpcustomizeadmin_input_icon" value="<?php echo get_option('wpcustomizeadmin_adminicon'); ?>"/></td>
+                        </tr>
+                        <tr valign="top">
+                        	<th scope="row"><?php _e('Main Color','wpcustomizeadmin');?>:</th>
+                        	<td>
+                        		<div class="customize_colors">
+									<span class="yellow" data-color="yellow"></span>
+									<span class="orange" data-color="orange"></span>
+									<span class="blue" data-color="blue"></span>
+									<span class="red" data-color="red"></span>
+									<span class="darkred" data-color="darkred"></span>	
+								</div>
+								<input class="customcolor" type="hidden" name="wpcustomizeadmin_input_color" value="<?php echo get_option('wpcustomizeadmin_admincolor'); ?>"/></td>
                         </tr>
                         <tr valign="top">
                         	<th scope="row"><?php _e('Custom CSS lines','wpcustomizeadmin');?>:</th>
